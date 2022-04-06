@@ -18,7 +18,7 @@
             die('Erreur : '.$e->getMessage());
         }
     }
-    //fonction qui affiche tous les utilisateurs
+    //fonction qui affiche tous les utilisateurs (echo)
     function showAllUser($bdd):void{
         try{
             $req = $bdd->prepare('SELECT * FROm utilisateur');
@@ -36,7 +36,7 @@
             die('Erreur : '.$e->getMessage());
         }
     }
-    //fonction affiche tous les utilisateurs (version alternative)
+    //fonction retourne tous les utilisateurs (version alternative)
     function showAllUserV2($bdd):array {
         try{
             $req = $bdd->prepare("SELECT * FROM utilisateur");
@@ -50,7 +50,7 @@
             die('Erreur : '.$e->getMessage());
         }
     }
-    //fonction affiche tous les utilisateurs (version alternative)
+    //fonction retourne tous les utilisateurs (version alternative)
     function showAllUserV3($bdd):array {
         try{
             $req = $bdd->prepare("SELECT * FROM utilisateur");
@@ -84,7 +84,7 @@
             die('Erreur : '.$e->getMessage());
         }
     }
-    //fonction affiche récupére un utilisateur
+    //fonction retourne un enregistrement utilisateur depuis son id
     function getUser($bdd, $id):array {
         try{
             $req = $bdd->prepare("SELECT nom_util, prenom_util, mail_util, mdp_util FROM utilisateur WHERE id_util = :id_util");
@@ -100,7 +100,7 @@
             die('Erreur : '.$e->getMessage());
         }
     }
-    //fonction qui supprime un utilisateur (table->utilisateur) depuis son $id
+    //fonction qui supprime un utilisateur (table->utilisateur) depuis son id($value)
     function deleteUser($bdd, $value):void{
         try{
             $req = $bdd->prepare('DELETE FROM utilisateur WHERE id_util = :id_util');
@@ -112,6 +112,52 @@
         {
         //affichage d'une exception en cas d’erreur
         die('Erreur : '.$e->getMessage());
+        }
+    }
+    //fonction qui retourne un enregistrement utilisateur depuis son mail et mdp
+    function getUserByInfo($bdd, $mail, $mdp):array {
+        try{
+            $req = $bdd->prepare("SELECT * FROM utilisateur 
+            WHERE mail_util = :mail_util AND mdp_util = :mdp_util");
+            $req->execute(array(
+                'mail_util' => $mail,  
+                'mdp_util' => $mdp 
+            ));
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
+        catch(Exception $e)
+        {
+            //affichage d'une exception en cas d’erreur
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+    //fonction qui teste si le mail existe en BDD et retourne un boolean
+    function getUserBymail($bdd, $mail):bool{
+        try{
+            //préparation de la requête
+            $req = $bdd->prepare("SELECT * FROM utilisateur 
+            WHERE mail_util = :mail_util");
+            //éxécution de la requête
+            $req->execute(array(
+                'mail_util' => $mail,
+            ));
+            //stockage du résultat de la requête dans $data
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            //test si le mail existe déja en BDD($data est différent de null)
+            if($data!= null){
+                //retourne true
+                return true;
+            }
+            //sinon le mail n'existe pas
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e)
+        {
+            //affichage d'une exception en cas d’erreur
+            die('Erreur : '.$e->getMessage());
         }
     }
 ?>

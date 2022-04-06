@@ -20,5 +20,7 @@
         <input type="password" name="mdp_util">
         <p><input type="submit" value="Ajouter" name="submit"></p>
     </form>
+    <p id="error"></p>
+    <script src="./asset/script/script2.js"></script>
 </body>
 </html>

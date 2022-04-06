@@ -22,3 +22,9 @@ li>a{
 p,input,textarea,h3{
     transform: translateX(5px);
 }
+a{
+    text-decoration: none;
+}
+span{
+    font-weight: bold;
+}

@@ -24,9 +24,8 @@
     foreach($list as $value){
         //on affiche à chaque tour un paragraphe avec les de l'utilisateur
         echo '<p><input type="checkbox" name="box[]" value="'.$value['id_util'].'">
-        <a href="update_user.php?id='.$value['id_util'].'">le prenom est égal à :
-         '.$value['prenom_util'].' le mdp est est égal à :
-        '.$value['mdp_util'].'</a></p>';
+        <a href="update_user.php?id='.$value['id_util'].'">Nom :
+         '.$value['nom_util'].', Mail : '.$value['mail_util'].'</a></p>';
     }
     echo '<p><input type="submit" value="Supprimer"></p>
     </form>';
@@ -47,7 +46,7 @@
          }, 1000);</script>';
     }
     else{
-        echo "<p>Veuillez cocher un ou plusieurs produit à supprimer</p>";
+        echo "<p>Veuillez cocher un ou plusieurs utilisateur à supprimer</p>";
     }
     //version 3
     /*$obj = showAllUserV3($bdd);
