@@ -6,6 +6,8 @@
     include './utils/connectBdd.php';
     //importer le model
     include './model/model_user.php';
+    //importer la vue (menu)
+    include './view/view_menu.php';
     //importer la vue(interface)
     include './view/view_update_user.php';
     /*---------------------------------------
@@ -42,9 +44,4 @@
             echo 'Veuillez compléter les champs du formulaire';
         }
     }
-        
-
-
-
-
 ?>
