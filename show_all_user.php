@@ -30,7 +30,7 @@
     }
     echo '<p><input type="submit" value="Supprimer"></p>
     </form>';
-    //vérification de la super globale $_POST['id_prod']
+    //vérification de la super globale $_POST['box']
     if(isset($_POST['box'])){
         //boucle pour parcourir chaque case cochés ($value équivaut à value en HTML)
         foreach($_POST['box'] as $value){
