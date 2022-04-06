@@ -28,8 +28,8 @@
          '.$value['prenom_util'].' le mdp est est égal à :
         '.$value['mdp_util'].'</a></p>';
     }
-    echo '<p><input type="submit" value="Supprimer"></p><
-    /form>';
+    echo '<p><input type="submit" value="Supprimer"></p>
+    </form>';
     //vérification de la super globale $_POST['id_prod']
     if(isset($_POST['box'])){
         //boucle pour parcourir chaque case cochés ($value équivaut à value en HTML)
