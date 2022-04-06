@@ -23,7 +23,7 @@
     //on parcours le tableau
     foreach($list as $value){
         //on affiche à chaque tour un paragraphe avec les de l'utilisateur
-        echo '<p><inputb type="checkbox" name="box[]" value="'.$value['id_util'].'">
+        echo '<p><input type="checkbox" name="box[]" value="'.$value['id_util'].'">
         <a href="update_user.php?id='.$value['id_util'].'">le prenom est égal à :
          '.$value['prenom_util'].' le mdp est est égal à :
         '.$value['mdp_util'].'</a></p>';
